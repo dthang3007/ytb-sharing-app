@@ -1,0 +1,15 @@
+.share {
+  max-width: 400px;
+  margin: auto;
+  margin-top: 2rem;
+  h2 {
+    text-align: center;
+  }
+  form {
+    margin-top: 2rem;
+  }
+  .grp-btn {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

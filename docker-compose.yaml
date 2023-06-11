@@ -1,0 +1,70 @@
+version: '3.8'
+services:
+  postgres-db:
+    image: postgres:13
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: nest
+    networks:
+      - ytb-sharing-app
+    volumes:
+      - postgres-data:/var/lib/postgres-data/data
+
+  mongo-db:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_DATABASE: mongo-nest
+    ports:
+      - 27017:27017
+    networks:
+      - ytb-sharing-app
+    volumes:
+      - mongo-data:/var/lib/mongo-data/data
+
+  redis-db:
+    image: redis
+    ports:
+      - 6379:6379
+    networks:
+      - ytb-sharing-app
+    volumes:
+      - redis-data:/var/lib/redis-data/data
+
+  web-api:
+    image: ytb-sharing-be
+    build:
+      context: ./ytb-sharing-be
+      dockerfile: Dockerfile
+    container_name: web-api-c
+    ports:
+      - 9000:9000
+    networks:
+      - ytb-sharing-app
+    depends_on:
+      - mongo-db
+      - redis-db
+      - postgres-db
+    volumes:
+      - .:/code
+
+  web-fe:
+    image: ytb-sharing-fe
+    build:
+      context: ./ytb-sharing-fe
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    networks:
+      - ytb-sharing-app
+
+networks:
+  ytb-sharing-app:
+    driver: bridge
+
+volumes:
+  postgres-data:
+  redis-data:
+  mongo-data:

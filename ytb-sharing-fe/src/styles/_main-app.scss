@@ -1,0 +1,16 @@
+main {
+  .video {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    .iframe {
+      min-height: 300px;
+      width: 30%;
+      margin: 1rem;
+    }
+    .info {
+      width: 50%;
+      margin: 1rem;
+    }
+  }
+}

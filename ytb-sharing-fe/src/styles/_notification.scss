@@ -1,0 +1,26 @@
+.notification-app {
+  cursor: pointer;
+}
+.noti-popover {
+  max-width: 400px;
+  .content {
+    overflow-y: auto;
+    max-height: 300px;
+    position: relative;
+    .box {
+      position: relative;
+      cursor: pointer;
+    }
+  }
+  .unread {
+    &::after {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: red;
+      right: 10px;
+      top: 0;
+    }
+  }
+}
