@@ -1,12 +1,14 @@
 import io from 'socket.io-client';
+import { BASE_URL } from './api';
 
 let socketIo: any;
 
 export default class Socket {
   getInstance = (email: string) => {
     if (socketIo == null) {
-      socketIo = io('http://localhost:9000', {
+      socketIo = io(BASE_URL, {
         secure: true,
+
         reconnection: true,
         rejectUnauthorized: false,
         transports: ['websocket'],

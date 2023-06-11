@@ -35,7 +35,7 @@ const Main = (props: Props) => {
               page.map((item, i) => (
                 <div className="video" key={index + i}>
                   <div className="iframe">
-                    <iframe title="thangpham" width="100%" height="100%" src={getLink(item.link)}></iframe>
+                    <iframe title="thangpham" width="100%" height="300px" src={getLink(item.link)}></iframe>
                   </div>
                   <div className="info">
                     <h3>{item.title}</h3>

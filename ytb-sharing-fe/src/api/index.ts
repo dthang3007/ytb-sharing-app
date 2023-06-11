@@ -5,16 +5,17 @@ import { useAuthStore } from '../store/useAuthStore';
 export const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export const api = axios.create({
-  baseURL: BASE_URL,
+  baseURL: `${BASE_URL}/api`,
 });
 
 api.interceptors.request.use((config) => {
   const { auth } = useAuthStore.getState();
+  config.headers['ngrok-skip-browser-warning'] = true;
   if (auth?.accessToken) {
     config.headers['Authorization'] = `Bearer ${auth.accessToken}`;
   }
 
-  return config;
+  return { ...config };
 });
 
 api.interceptors.response.use(
