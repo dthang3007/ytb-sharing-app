@@ -5,7 +5,7 @@ import { useAuthStore } from '../store/useAuthStore';
 export const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export const api = axios.create({
-  baseURL: `${BASE_URL}/api`,
+  baseURL: `/api`,
 });
 
 api.interceptors.request.use((config) => {

@@ -8,7 +8,7 @@ export default class Socket {
     if (socketIo == null) {
       socketIo = io(BASE_URL, {
         secure: true,
-
+        path: '/notification',
         reconnection: true,
         rejectUnauthorized: false,
         transports: ['websocket'],

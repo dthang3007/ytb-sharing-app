@@ -7,6 +7,7 @@ import { getLink } from '../utils';
 
 type Props = {};
 
+const REFETCH_INTERVAL = 180000;
 const Main = (props: Props) => {
   const { ref, inView } = useInView();
 
@@ -14,6 +15,7 @@ const Main = (props: Props) => {
     queryFn: ({ pageParam }) => {
       return getVideos({ limit: 5, cursor: pageParam });
     },
+    refetchInterval: REFETCH_INTERVAL,
     getNextPageParam: (lastPage) => {
       const cursor = lastPage[lastPage.length - 1]?.id;
       return cursor;

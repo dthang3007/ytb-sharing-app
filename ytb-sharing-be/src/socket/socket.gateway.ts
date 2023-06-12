@@ -10,7 +10,7 @@ import {
 import { Server, Socket } from 'socket.io';
 import { PrismaService } from 'src/prisma/prisma.service';
 
-@WebSocketGateway({ cors: true })
+@WebSocketGateway({ path: '/notification', cors: true })
 export class SocketGateway
   implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect
 {
