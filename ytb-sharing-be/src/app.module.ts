@@ -18,10 +18,10 @@ import { VideoModule } from './video/video.module';
     BullModule.forRoot({
       redis: {
         host: process.env.REDIS_HOST,
-        port: +process.env.REDIS_PORT,
+        port: process.env.REDIS_PORT ? +process.env.REDIS_PORT : 0,
       },
     }),
-    MongooseModule.forRoot(process.env.MONGO_URL),
+    MongooseModule.forRoot(process.env.MONGO_URL || ''),
     AuthModule,
     PrismaModule,
     VideoModule,
